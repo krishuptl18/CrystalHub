@@ -1,0 +1,75 @@
+.ring-slider-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 40px;
+  background: #fff;
+  overflow: hidden;
+}
+
+/* LEFT TEXT */
+.ring-text {
+  width: 30%;
+}
+
+.ring-text h1 {
+  font-size: 38px;
+  font-weight: 700;
+}
+
+.ring-text h2 {
+  font-size: 64px;
+  font-weight: 900;
+}
+
+.ring-text p {
+  letter-spacing: 3px;
+  margin-top: 10px;
+}
+
+/* SLIDER */
+.ring-slider {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  width: 70%;
+  padding-left: 20px;
+}
+
+.ring-slider::-webkit-scrollbar {
+  display: none;
+}
+
+/* CARD */
+.ring-card {
+  min-width: 220px;
+  height: 420px;
+  transform: skew(-10deg);
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.ring-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: skew(10deg) scale(1.1);
+}
+
+/* ARROWS */
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #000;
+  color: #fff;
+  border: none;
+  font-size: 24px;
+  padding: 8px 12px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.nav.left { left: 32%; }
+.nav.right { right: 20px; }

@@ -1,0 +1,24 @@
+.about-page {
+  background: #ffffff;
+}
+
+.about-card {
+  background: #f9f9f9;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-6px);
+}
+
+.about-card i {
+  font-size: 32px;
+  color: #040c24;
+}
+
+.about-page img {
+  max-height: 380px;
+  object-fit: cover;
+}

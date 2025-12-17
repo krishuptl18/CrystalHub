@@ -1,0 +1,130 @@
+/* HEADER BACKGROUND */
+.header-modern {
+  background-color: #040c24; /* deep purple – adjust to match your brand */
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* LOGO WITH GLOW */
+.logo-glow {
+  display: inline-block;
+  padding: 8px 15px; /* padding around logo */
+  border-radius: 12px;
+  background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
+  box-shadow: 0 0 25px rgba(255,255,255,0.5); /* glow effect */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo-glow img {
+  height: 60px; /* increased logo size */
+  display: block;
+}
+
+.logo-glow:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 35px rgba(255,255,255,0.7);
+}
+
+/* SEARCH BAR */
+.search-modern {
+  width: 350px;
+}
+
+.search-modern input {
+  border-radius: 30px;
+  padding-left: 18px;
+  padding-right: 40px;
+  height: 42px;
+  border: none;
+}
+
+.search-modern input:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.15rem rgba(255,255,255,0.3);
+}
+
+.search-modern .search-icon {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #555;
+  cursor: pointer;
+}
+
+/* MENU LINKS */
+.menu-link {
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.menu-link:hover {
+  color: #ffdd57;
+}
+
+/* MOBILE MENU */
+#mobileMenu a.menu-link {
+  color: #333;
+  font-weight: 500;
+}
+
+#mobileMenu a.menu-link:hover {
+  color: #6a1b9a;
+}
+
+/* RESPONSIVE SEARCH */
+@media (max-width: 991px) {
+  .search-modern {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+}
+
+.dropdown-menu-custom {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  background: #fff;
+  min-width: 200px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  border-radius: 6px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: 0.3s;
+  z-index: 100;
+}
+
+.dropdown-menu-custom a {
+  display: block;
+  padding: 10px 15px;
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.dropdown-menu-custom a:hover {
+  background: #f5f5f5;
+}
+
+/* Show on hover */
+.dropdown:hover .dropdown-menu-custom {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
