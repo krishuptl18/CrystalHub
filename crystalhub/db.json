@@ -1,0 +1,20 @@
+{
+  "products": [
+    {
+      "id": "6d5e",
+      "title": "Handmade Rose Quartz 14k Gold Ring",
+      "price": "599",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRES6S7c07n74L-CyHziM01p25o58L9j3HtyQ&s",
+      "category": "ring",
+      "description": "Handmade Rose Quartz 14k Gold Ring - Vintage-inspired Engagement Ring "
+    },
+    {
+      "id": "936c",
+      "title": "Seetara Rose Quartz Bracelet",
+      "price": "499",
+      "image": "https://seetara.in/cdn/shop/files/rose-quartz-healing-crystal-bracelet-or-for-unconditional-love-and-acceptance-seetara-11.jpg?v=1716528778",
+      "category": "bracelet",
+      "description": "Seetara Rose Quartz Bracelet"
+    }
+  ]
+}

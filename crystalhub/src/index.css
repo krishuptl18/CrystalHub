@@ -9,3 +9,7 @@ html, body {
   height: 100%;
   overflow-x: hidden;   /* 🔥 removes bottom scrollbar */
 }
+/* Fix content going under fixed header */
+body {
+  padding-top: 110px;
+}

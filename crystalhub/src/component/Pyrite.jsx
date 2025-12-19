@@ -23,7 +23,7 @@ const categories = [
 
 export default function Pyrite() {
   return (
-    <div className="category-wrapper">  
+    <div className="category-wrapper mt-5">  
       {/* <h2 className="text-center">Pyrite</h2> */}
 
       <div className="category-grid">

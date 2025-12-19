@@ -1,82 +1,131 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import { Link, useNavigate } from "react-router-dom";
+import { FaUserCircle, FaShoppingCart } from "react-icons/fa"; // Added cart icon
 import "../style/Header.css";
 import logo from "../assets/logo.png";
 
 const Header = () => {
-  return (
-    <nav className="navbar navbar-expand-lg header-modern">
-      <div className="container">
+    const navigate = useNavigate();
 
-        {/* Logo */}
-        <Link className="navbar-brand logo-glow" to="/">
-          <img src={logo} alt="CrystalHub" height="45" />
-        </Link>
+    // Get logged in user
+    const authUser = JSON.parse(localStorage.getItem("authUser"));
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
 
-        {/* Hamburger */}
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#mainNavbar"
-          aria-controls="mainNavbar"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+    const handleLogout = () => {
+        localStorage.removeItem("authUser");
+        localStorage.removeItem("isLoggedIn");
+        navigate("/login");
+    };
 
-        {/* Collapse */}
-        <div className="collapse navbar-collapse" id="mainNavbar">
+    const handleShopNow = () => {
+        navigate("/checkout"); // Navigate to checkout page
+    };
 
-          {/* Search */}
-          <form className="search-modern mx-lg-4 my-3 my-lg-0 position-relative">
-            <input
-              type="text"
-              placeholder="Search for gifts, decor & more..."
-              className="form-control"
-            />
-            <i className="bi bi-search search-icon"></i>
-          </form>
+    return (
+        <Navbar expand="lg" className="crystal-navbar" fixed="top">
+            <Container>
+                {/* Logo */}
+                <Navbar.Brand as={Link} to="/" className="brand">
+                    <div className="logo-wrapper">
+                        <img src={logo} alt="CrystalZone" className="logo" />
+                    </div>
+                </Navbar.Brand>
 
-          {/* Menu */}
-          <ul className="navbar-nav ms-auto align-items-lg-center gap-lg-4">
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-            <li className="nav-item">
-              <Link className="nav-link menu-link" to="/">Home</Link>
-            </li>
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="ms-auto nav-links align-items-lg-center">
+                        <Nav.Link as={Link} to="/">Home</Nav.Link>
+                        <Nav.Link as={Link} to="/about">About Us</Nav.Link>
 
-            <li className="nav-item">
-              <Link className="nav-link menu-link" to="/about">About Us</Link>
-            </li>
+                        {/* Crystals Dropdown */}
+                        <NavDropdown title="Crystals" id="crystals-dropdown">
+                            <NavDropdown.Item as={Link} to="/products/healingstone">
+                                HEALING CRYSTALS
+                            </NavDropdown.Item>
+                           <NavDropdown.Item as={Link} to="/products/bracelet">
+                                CRYSTAL BRACELETS
+                            </NavDropdown.Item>
+                           <NavDropdown.Item as={Link} to="/products/pendant">
+                                PENDANTS
+                            </NavDropdown.Item>
+                           <NavDropdown.Item as={Link} to="/products/ring">
+                                RINGS
+                            </NavDropdown.Item>
+                           <NavDropdown.Item as={Link} to="/products/tree">
+                                CRYSTAL TREES
+                            </NavDropdown.Item>
+                           <NavDropdown.Item as={Link} to="/products/showpiece">
+                                SHOWPIECES
+                            </NavDropdown.Item>
+                           <NavDropdown.Item as={Link} to="/products/sage">
+                                SAGE
+                            </NavDropdown.Item>
+                           <NavDropdown.Item as={Link} to="/products/amethyst">
+                                AMETHYST
+                            </NavDropdown.Item>
+                        </NavDropdown>
 
-            {/* Dropdown */}
-            <li className="nav-item dropdown">
-              <span
-                className="nav-link dropdown-toggle menu-link"
-                role="button"
-                data-bs-toggle="dropdown"
-              >
-                Shop
-              </span>
-              <ul className="dropdown-menu">
-                <li><Link className="dropdown-item" to="/services/healing">Crystal Healing</Link></li>
-                <li><Link className="dropdown-item" to="/services/astrology">Astrology</Link></li>
-                <li><Link className="dropdown-item" to="/services/vastu">Vastu Consultation</Link></li>
-              </ul>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link menu-link" to="/shop">Services</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link menu-link" to="/contact">Contact Us</Link>
-            </li>
+                        <Nav.Link as={Link} to="/service">Our Services</Nav.Link>
+                        <Nav.Link as={Link} to="/contact">Contact Us</Nav.Link>
 
-          </ul>
-        </div>
-      </div>
-    </nav>
-  );
+                        {/* Search */}
+                        <Form className="search-form ms-md-3 me-3">
+                            <Form.Control
+                                type="search"
+                                placeholder="Search crystals..."
+                                className="search-input"
+                            />
+                        </Form>
+
+                        {/* SHOP NOW BUTTON */}
+                        <Button
+                            variant="success"
+                            className="me-3 d-flex align-items-center gap-1"
+                            onClick={handleShopNow}
+                        >
+                            <FaShoppingCart /> Shop Now
+                        </Button>
+
+                        {/* PROFILE DROPDOWN */}
+                        <NavDropdown
+                            title={
+                                <span className="d-flex align-items-center gap-2 profile-title">
+                                    <FaUserCircle size={18} />
+                                    {authUser?.name || "Guest"}
+                                </span>
+                            }
+                            id="profile-dropdown"
+                            align="end"
+                            menuVariant="dark"
+                        >
+                            {!isLoggedIn ? (
+                                <>
+                                    <NavDropdown.Item as={Link} to="/login">Login</NavDropdown.Item>
+                                    <NavDropdown.Item as={Link} to="/register">Register</NavDropdown.Item>
+                                </>
+                            ) : (
+                                <>
+                                    {authUser?.role === "admin" && (
+                                        <NavDropdown.Item as={Link} to="/admin/dashboard">
+                                            Admin Dashboard
+                                        </NavDropdown.Item>
+                                    )}
+                                    <NavDropdown.Divider />
+                                    <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
+                                </>
+                            )}
+                        </NavDropdown>
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
+    );
 };
 
 export default Header;

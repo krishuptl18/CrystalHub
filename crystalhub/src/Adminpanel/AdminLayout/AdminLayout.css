@@ -1,0 +1,20 @@
+.admin-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.admin-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+@media (max-width: 991px) {
+    .admin-container {
+        flex-direction: column;
+    }
+
+    .admin-content {
+        padding: 15px;
+    }
+}

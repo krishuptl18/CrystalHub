@@ -1,130 +1,97 @@
-/* HEADER BACKGROUND */
-.header-modern {
-  background-color: #040c24; /* deep purple – adjust to match your brand */
-  color: #fff;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+.crystal-navbar {
+    background: linear-gradient(135deg,
+            #040c24,
+            #040c24);
+    box-shadow: 0 6px 20px rgba(120, 160, 255, 0.2);
+    padding: 14px 0;
 }
 
-/* LOGO WITH GLOW */
-.logo-glow {
-  display: inline-block;
-  padding: 8px 15px; /* padding around logo */
-  border-radius: 12px;
-  background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
-  box-shadow: 0 0 25px rgba(255,255,255,0.5); /* glow effect */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.logo-glow img {
-  height: 60px; /* increased logo size */
-  display: block;
+.logo-wrapper {
+    background: radial-gradient(circle, #1f3b8a, #0b1535);
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow:
+        0 0 12px rgba(140, 180, 255, 0.7),
+        0 0 25px rgba(140, 180, 255, 0.4);
 }
 
-.logo-glow:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 35px rgba(255,255,255,0.7);
+.logo {
+    width: 65px;
+    height: auto;
 }
 
-/* SEARCH BAR */
-.search-modern {
-  width: 350px;
+/* Brand text */
+.brand-text {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #a8c1ff;
 }
 
-.search-modern input {
-  border-radius: 30px;
-  padding-left: 18px;
-  padding-right: 40px;
-  height: 42px;
-  border: none;
+/* Nav links */
+.nav-links .nav-link {
+    color: #dbe3ff !important;
+    margin: 0 3px;
+    font-size: 16px;
+    transition: 0.3s;
 }
 
-.search-modern input:focus {
-  outline: none;
-  box-shadow: 0 0 0 0.15rem rgba(255,255,255,0.3);
+.nav-links .nav-link:hover {
+    color: orange !important;
 }
 
-.search-modern .search-icon {
-  position: absolute;
-  top: 50%;
-  right: 12px;
-  transform: translateY(-50%);
-  font-size: 16px;
-  color: #555;
-  cursor: pointer;
+/* Dropdown styling */
+.nav-links .dropdown-menu {
+    background: #0f1c3f;
+    border: 1px solid rgba(150, 180, 255, 0.2);
+    box-shadow: 0 10px 25px rgba(120, 160, 255, 0.3);
 }
 
-/* MENU LINKS */
-.menu-link {
-  color: #fff;
-  font-weight: 500;
-  text-decoration: none;
-  transition: color 0.3s ease;
+.nav-links .dropdown-item {
+    color: #dbe3ff;
+    transition: 0.3s;
 }
 
-.menu-link:hover {
-  color: #ffdd57;
+.nav-links .dropdown-item:hover {
+    background: rgba(150, 180, 255, 0.15);
+    color: orange;
 }
 
-/* MOBILE MENU */
-#mobileMenu a.menu-link {
-  color: #333;
-  font-weight: 500;
+/* Search bar */
+.search-form {
+    width: 220px;
 }
 
-#mobileMenu a.menu-link:hover {
-  color: #6a1b9a;
+.search-input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(150, 180, 255, 0.3);
+    color: #e6ebff;
+    border-radius: 20px;
+    padding: 6px 15px;
 }
 
-/* RESPONSIVE SEARCH */
-@media (max-width: 991px) {
-  .search-modern {
-    width: 100%;
-    margin-top: 10px;
-  }
-}
-/* Dropdown */
-.dropdown {
-  position: relative;
+.search-input::placeholder {
+    color: #b8c4ff;
 }
 
-.dropdown-toggle {
-  cursor: pointer;
+.search-input:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #9fb7ff;
+    box-shadow: 0 0 10px rgba(150, 180, 255, 0.5);
+    color: #fff;
 }
 
-.dropdown-menu-custom {
-  position: absolute;
-  top: 120%;
-  left: 0;
-  background: #fff;
-  min-width: 200px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-  border-radius: 6px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
-  transition: 0.3s;
-  z-index: 100;
+
+#profile-dropdown {
+    margin-left: 10px;
 }
 
-.dropdown-menu-custom a {
-  display: block;
-  padding: 10px 15px;
-  color: #333;
-  text-decoration: none;
-  font-size: 14px;
+#profile-dropdown::after {
+    display: none !important;
 }
-
-.dropdown-menu-custom a:hover {
-  background: #f5f5f5;
-}
-
-/* Show on hover */
-.dropdown:hover .dropdown-menu-custom {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
