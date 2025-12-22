@@ -1,4 +1,4 @@
-.admin-sidebar {
+/* .admin-sidebar {
     width: 240px;
     min-height: 100vh;
     background: linear-gradient(180deg, #040c24, #000814);
@@ -38,10 +38,71 @@
     margin-top: 20px;
 }
 
-/* MOBILE FIX */
 @media (max-width: 991px) {
     .admin-sidebar {
         width: 100%;
         min-height: auto;
+    }
+} */
+
+.admin-sidebar {
+    width: 240px;
+    height: 100vh;
+    /* Full viewport height */
+    position: fixed;
+    /* FIXED sidebar */
+    top: 0;
+    left: 0;
+    background: linear-gradient(180deg, #040c24, #000814);
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.sidebar-title {
+    margin-bottom: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.sidebar-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex-grow: 1;
+    /* Push logout to bottom */
+}
+
+.sidebar-link {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.sidebar-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.active-link {
+    background-color: #ffc107;
+    color: #000;
+    font-weight: 600;
+}
+
+.sidebar-logout {
+    margin-top: auto;
+}
+
+/* MOBILE */
+@media (max-width: 991px) {
+    .admin-sidebar {
+        position: relative;
+        /* Disable fixed on mobile */
+        width: 100%;
+        height: auto;
     }
 }

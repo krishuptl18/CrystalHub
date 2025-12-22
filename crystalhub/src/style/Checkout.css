@@ -1,0 +1,36 @@
+.checkout-lock-screen {
+    min-height: calc(100vh - 180px);
+    /* header + footer safe */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.04),
+            rgba(0, 0, 0, 0.04));
+    padding: 40px 15px;
+}
+
+.lock-card {
+    background: #040c24;
+    padding: 40px 35px;
+    border-radius: 18px;
+    text-align: center;
+    max-width: 420px;
+    width: 100%;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.lock-icon {
+    font-size: 52px;
+    margin-bottom: 15px;
+}
+
+.lock-card h3 {
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: orange;
+}
+
+.lock-card p {
+    color: #6c757d;
+    margin-bottom: 25px;
+}

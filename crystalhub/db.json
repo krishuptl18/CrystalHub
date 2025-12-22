@@ -1,20 +1,156 @@
 {
   "products": [
     {
-      "id": "6d5e",
-      "title": "Handmade Rose Quartz 14k Gold Ring",
-      "price": "599",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRES6S7c07n74L-CyHziM01p25o58L9j3HtyQ&s",
-      "category": "ring",
-      "description": "Handmade Rose Quartz 14k Gold Ring - Vintage-inspired Engagement Ring "
-    },
-    {
       "id": "936c",
       "title": "Seetara Rose Quartz Bracelet",
       "price": "499",
       "image": "https://seetara.in/cdn/shop/files/rose-quartz-healing-crystal-bracelet-or-for-unconditional-love-and-acceptance-seetara-11.jpg?v=1716528778",
       "category": "bracelet",
       "description": "Seetara Rose Quartz Bracelet"
+    },
+    {
+      "id": "b99f",
+      "title": "Rose Quartz Raw Bracelet",
+      "price": "400",
+      "image": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSChCwZbzwdiq5haNNiazifeQ6hyN3oV6P6hzF_jfTvYuecHz7IVaOGKj_AgejdlmOQdbJnKh80I2HIdx9obcIxWROkbms1LY3AUOGqlCnRuf8nLGgjnFO8eA&usqp=CAc",
+      "category": "bracelet",
+      "description": "Rose Quartz Raw Bracelet"
+    },
+    {
+      "id": "81d4",
+      "title": "Naturel clear quartz braclate ",
+      "price": "450",
+      "image": "https://d1311wbk6unapo.cloudfront.net/NushopCatalogue/tr:f-webp,w-1200,fo-auto/683e93ace5567a2e09d82eff/cat_img/_ZwOWMF__3L55G1CN5S_2025-06-18_1.jpg",
+      "category": "bracelet",
+      "description": "Naturel clear quartz braclate "
+    },
+    {
+      "id": "562f",
+      "title": "Amethyst Bracelet ",
+      "price": "500",
+      "image": "https://www.namamilife.com/cdn/shop/files/Group269.png?v=1757095222&width=3000",
+      "category": "bracelet",
+      "description": "Amethyst Bracelet "
+    },
+    {
+      "id": "be92",
+      "title": "Round Aquamarine Bracelet ",
+      "price": "550",
+      "image": "https://www.franceperles.com/54619-medium_default/round-aquamarine-bracelet-9-10mm-elastic-x-1pc.jpg",
+      "category": "bracelet",
+      "description": "Round Aquamarine Bracelet "
+    },
+    {
+      "id": "3126",
+      "title": "Green Aventurine Bracelet",
+      "price": "600",
+      "image": "https://www.namamilife.com/cdn/shop/files/Group222_a7ebf471-8630-4ad0-b74f-7778d4679395.png?v=1757095267&width=3000",
+      "category": "bracelet",
+      "description": "Green Aventurine Bracelet\n\n"
+    },
+    {
+      "id": "130a",
+      "title": "Rose Quartz Pencil Pendant",
+      "price": "500",
+      "image": "data:image/webp;base64,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",
+      "category": "pendant",
+      "description": "Rose Quartz Pencil Pendant"
+    },
+    {
+      "id": "a18e",
+      "title": "Amethyst Pencil Pendant",
+      "price": "550",
+      "image": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcR8VdJsoqyfvDdV8nyrUgPIjz7QfQ5DdUx_1SeLS8O01j2YxcWzMhP5sr-_ucDIY_JHgDu34H206oQjGyGeToIfM2CWseC_SL9xmmT8R2w&usqp=CAc",
+      "category": "pendant",
+      "description": "Amethyst Pencil Pendant"
+    },
+    {
+      "id": "0ac8",
+      "title": "Amethyst Hexagon Pendant",
+      "price": "650",
+      "image": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTLF0DIbEzIj1In9K1ktiVz5Q3Lon5QBXrWGSD0hj5HzHjB1C5SgpKdDxgtCGVJiQkactiJc8ziGTacNougfxyIX0_GuWV_efKHSN3ewWa5tL9TEx8KP9HCUKcpGvqFZQ&usqp=CAc",
+      "category": "pendant",
+      "description": "Amethyst Hexagon Pendant"
+    },
+    {
+      "id": "5ab2",
+      "title": "Ruby Glow American Diamond Pendant",
+      "price": "700",
+      "image": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQkBhbBLywUuwiTiA94dufxELF6DkKHDXXJkPlfuBFRNTUxrX8IFMMT3sAJGo2sG0Joycu758voHwA5Y0dCJfFsBQKIz79eF12qfi-522M&usqp=CAc",
+      "category": "pendant",
+      "description": "Ruby Glow American Diamond Pendant"
+    },
+    {
+      "id": "ccf9",
+      "title": "Crystal Tumble Wire Wrapped Pendants With Chain",
+      "price": "700",
+      "image": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRvHCFxOZfrfIV-cbFgioKjfOFV_7dcrFIxPhnyCLHOlZUM787PBDOmlg0RlzbhsyT6I5q8TCBXwQAg_v38ik_fEdwzfCzO_UMivOlS5ney0rsWsutOdULh2X0HDL8VENuT7RTfUxNiduA&usqp=CAc",
+      "category": "pendant",
+      "description": "Crystal Tumble Wire Wrapped Pendants With Chain"
+    },
+    {
+      "id": "2258",
+      "title": "Lapis Lazuli Stone Natural Healing Crystals and Stones Crystal Pendants",
+      "price": "800",
+      "image": "https://m.media-amazon.com/images/I/81EVSZFg0-L._AC_UY1100_.jpg",
+      "category": "pendant",
+      "description": "Lapis Lazuli Stone Natural Healing Crystals and Stones Crystal Pendants\n"
+    },
+    {
+      "id": "4d51",
+      "title": "Natural Rose Quartz Ring ",
+      "price": "400",
+      "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcS8ZMsl8hTF3RQuEFVHFosvUTTSlPvfildqQ21SmoAIjn2apTvxefyXDapdESsvanSpzLy9R6mee0joP4Yz6KIBbMBNXxQchPtXWVjyw7GcJxx3kn9AhGD20dABTGOO2AmjMNORUmmSD3E&usqp=CAc",
+      "category": "ring",
+      "description": "Natural Rose Quartz Ring "
+    },
+    {
+      "id": "6a81",
+      "title": "Amethyst Stone Ring",
+      "price": "500",
+      "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcT9h2nQ8ivWlm8BoAr9JC9WzzqSAT_itC6zHwJ-IXnS02poBI2jHXnaZtc9pm88RCan1v2dnQK5GJUP2ka4_YN8XpzMnrUEIbp0aKsTQsFhax7ZVY4vhHJ2&usqp=CAc",
+      "category": "ring",
+      "description": "Amethyst Stone Ring"
+    },
+    {
+      "id": "f7a4",
+      "title": "Vintage   Emerald   Diamond   Ring",
+      "price": "800",
+      "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRak37_x0Wib_V1tca9cAQg2bIHdusNmc76BGJHHBe0p4cnmwL0jIe6fRqLOrAFUb1x4yE90kL2nxAYrAjbZfKisgq3bDXXs6QEnGniNWLua_vyc5uUCHnbKA_NSNrV-f3nI6ALIDR7&usqp=CAc",
+      "category": "ring",
+      "description": "VintageEmeraldDiamondRing"
+    },
+    {
+      "id": "efb7",
+      "title": "Flare Blue Butterfly Diamond Ring",
+      "price": "900",
+      "image": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSSqJbdGOzqfImQAhUzUZglr2c7vAs_W1DWLQg1Vd6qe9KKZ0re1YS0P6HdtwobRWDApryBOvGBe8ruhCaNJQTQzJ-YaNLETqlU8yBMqpn8lmNDGHMOi79mq4ZXGTLGf7ZfHshvUw&usqp=CAc",
+      "category": "ring",
+      "description": "Flare Blue Butterfly Diamond Ring"
+    },
+    {
+      "id": "9f99",
+      "title": "Celebrated Victory Gemstone Ring",
+      "price": "1000",
+      "image": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSgIkTeLiHcgisjwr5ag_gUhLyybfoYJWeBGB6EOQ3Oq7SPVIyPyLWOdiUMzvk_JV0HKrENbSYg9-tlMTEuANgbaamebwTGbTxJBAhx_RMuByiE8OkGgT4G5jRUjONPkC2oAt9Hzf_N&usqp=CAc",
+      "category": "ring",
+      "description": "Celebrated Victory Gemstone Ring"
+    },
+    {
+      "id": "16b8",
+      "title": "Promise Rings",
+      "price": "1200",
+      "image": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcR8ubQX9YIfxI_zL4goub5tHW40v2Wz6Lg0MKugP-IYauioF5niPS71DtCtkys05qVmNbfELTFLiaiWUvaoNSiWAXQ6jOsvNalIQXiCbW9wDGHN8d-TnKnc4gaVB_Hp8OIpAPyx-hw&usqp=CAc",
+      "category": "ring",
+      "description": "Promise Rings"
+    },
+    {
+      "id": "cb04",
+      "title": "Seven Chakra Tree ",
+      "price": "1200",
+      "image": "https://m.media-amazon.com/images/I/81d47vgiTNL._AC_UF350,350_QL80_.jpg",
+      "category": "tree",
+      "description": "Seven Chakra Tree "
     }
   ]
 }

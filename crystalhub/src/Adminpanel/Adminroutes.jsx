@@ -1,7 +1,8 @@
-import AdminLayout from "./AdminLayout/AdminLayout";
-import AddProduct from "./Adminpages/Addproduct";
+
 import Dashboard from "./Adminpages/Dashboard";
+import AddProduct from "./Adminpages/AddProduct";
 import ProductList from "./Adminpages/ProductList";
+import AdminLayout from "./AdminLayout/AdminLayout";
 
 const adminRoutes = {
     path: "/admin",

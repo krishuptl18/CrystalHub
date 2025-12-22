@@ -1,20 +1,17 @@
-.admin-container {
-    display: flex;
+
+.admin-main-content {
+    margin-left: 240px;
+    /* SAME AS SIDEBAR WIDTH */
     min-height: 100vh;
-}
-
-.admin-content {
-    flex-grow: 1;
-    padding: 20px;
+    padding: 24px;
     background-color: #f8f9fa;
+    overflow-y: auto;
+    /* CONTENT scrolls */
 }
 
+/* MOBILE */
 @media (max-width: 991px) {
-    .admin-container {
-        flex-direction: column;
-    }
-
-    .admin-content {
-        padding: 15px;
+    .admin-main-content {
+        margin-left: 0;
     }
 }

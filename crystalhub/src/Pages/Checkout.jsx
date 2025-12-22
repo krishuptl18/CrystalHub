@@ -1,178 +1,327 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Container, Card, Button, Row, Col, Form } from "react-bootstrap";
+import {
+    Container,
+    Card,
+    Button,
+    Row,
+    Col,
+    Form,
+    Image,
+    Alert,
+} from "react-bootstrap";
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
+import "../style/Checkout.css";
 
 const Checkout = () => {
     const navigate = useNavigate();
 
-    // Logged in user
     const authUser = JSON.parse(localStorage.getItem("authUser"));
-
-    // User-specific cart key
     const cartKey = authUser ? `cart_${authUser.email}` : "cart";
 
     const [cart, setCart] = useState([]);
+    const [address, setAddress] = useState({
+        name: "",
+        phone: "",
+        street: "",
+        city: "",
+        pincode: "",
+    });
 
     /* 🔐 BLOCK CHECKOUT IF NOT LOGGED IN */
     if (!authUser) {
         return (
             <>
                 <Header />
-                <Container
-                    className="text-center"
-                    style={{ marginTop: "150px", minHeight: "50vh" }}
-                >
-                    <h3>Please login to access checkout 🔐</h3>
-                    <Button
-                        variant="warning"
-                        className="mt-3"
-                        onClick={() => navigate("/login")}
-                    >
-                        Go to Login
-                    </Button>
-                </Container>
+
+                <div className="checkout-lock-screen mt-5">
+                    <div className="lock-card">
+                        <div className="lock-icon">🔒</div>
+                        <h3>Login Required</h3>
+                        <p>
+                            Please log in to continue with checkout and place
+                            your order securely.
+                        </p>
+
+                        <Button
+                            variant="success"
+                            size="lg"
+                            onClick={() => navigate("/login")}
+                        >
+                            Go to Login
+                        </Button>
+                    </div>
+                </div>
+
                 <Footer />
             </>
         );
     }
 
-    /* LOAD USER CART AND MERGE GUEST CART IF EXISTS */
+    /* LOAD CART */
     useEffect(() => {
-        if (!authUser) return;
+        const userCart = JSON.parse(localStorage.getItem(cartKey)) || [];
+        setCart(userCart);
+    }, [cartKey]);
 
-        const userCartKey = `cart_${authUser.email}`;
-        const userCart = JSON.parse(localStorage.getItem(userCartKey)) || [];
-        const guestCart = JSON.parse(localStorage.getItem("cart")) || [];
-
-        // Merge guest cart into user cart
-        const mergedCart = [...userCart];
-
-        guestCart.forEach((item) => {
-            const exists = mergedCart.find((i) => i.id === item.id);
-            if (exists) {
-                exists.quantity += item.quantity;
-            } else {
-                mergedCart.push(item);
-            }
-        });
-
-        // Save merged cart to user cart key
-        localStorage.setItem(userCartKey, JSON.stringify(mergedCart));
-
-        // Clear guest cart
-        localStorage.removeItem("cart");
-
-        setCart(mergedCart);
-    }, [authUser]);
-
-    /* UPDATE QUANTITY */
     const handleQuantityChange = (id, qty) => {
         if (qty < 1) return;
-
-        const updatedCart = cart.map((item) =>
+        const updated = cart.map((item) =>
             item.id === id ? { ...item, quantity: qty } : item
         );
-
-        setCart(updatedCart);
-        localStorage.setItem(cartKey, JSON.stringify(updatedCart));
+        setCart(updated);
+        localStorage.setItem(cartKey, JSON.stringify(updated));
     };
 
-    /* REMOVE ITEM */
     const handleRemove = (id) => {
-        const updatedCart = cart.filter((item) => item.id !== id);
-
-        setCart(updatedCart);
-        localStorage.setItem(cartKey, JSON.stringify(updatedCart));
+        const updated = cart.filter((item) => item.id !== id);
+        setCart(updated);
+        localStorage.setItem(cartKey, JSON.stringify(updated));
     };
 
-    /* GRAND TOTAL */
-    const grandTotal = cart.reduce(
+    const subtotal = cart.reduce(
         (total, item) => total + item.price * item.quantity,
         0
     );
+    const tax = Math.round(subtotal * 0.05);
+    let delivery = 50;
+    let discount = 0;
+    let offerMessage = "";
 
-    /* EMPTY CART UI */
+    if (subtotal > 3499) {
+        discount = Math.round((subtotal + tax) * 0.2);
+        delivery = 0;
+        offerMessage =
+            "🎉 Free delivery + 20% discount applied on orders above ₹3499!";
+    } else if (subtotal + tax + delivery > 2000) {
+        discount = Math.round((subtotal + tax) * 0.1);
+        delivery = 0;
+        offerMessage =
+            "🎉 Your order qualifies for free delivery and 10% discount!";
+    }
+
+    const grandTotal = subtotal + tax + delivery - discount;
+
+    const proceedToPayment = () => {
+        const { name, phone, street, city, pincode } = address;
+        if (!name || !phone || !street || !city || !pincode) {
+            alert("Please fill all address fields");
+            return;
+        }
+        localStorage.setItem("checkoutAddress", JSON.stringify(address));
+        navigate("/payment");
+    };
+
     if (cart.length === 0) {
         return (
             <>
                 <Header />
-                <Container
-                    className="text-center"
-                    style={{ marginTop: "150px", minHeight: "50vh" }}
-                >
-                    <h3>Your cart is empty 😒</h3>
-                    <Button
-                        variant="primary"
-                        className="mt-3"
-                        onClick={() => navigate("/shop")}
-                    >
-                        Shop Now
-                    </Button>
-                </Container>
+
+                <div className="checkout-lock-screen mt-5">
+                    <div className="lock-card">
+                        <div className="lock-icon">🛒</div>
+                        <h3>Your cart is empty</h3>
+                        <p>Looks like you haven’t added anything yet.</p>
+
+                        <Button
+                            variant="primary"
+                            size="lg"
+                            onClick={() => navigate("/shop")}
+                        >
+                            Shop Now
+                        </Button>
+                    </div>
+                </div>
+
                 <Footer />
             </>
         );
     }
+
 
     return (
         <>
             <Header />
 
-            <Container className=" pt-5">
-                <h2 className=" mb-4">Checkout</h2>
+            <Container className="mt-5 pt-5 mb-5">
+                <h2 className="mb-4 mt-5 fw-bold">Checkout</h2>
 
-                {cart.map((item) => (
-                    <Card key={item.id} className="p-3 mb-3 shadow-sm">
-                        <Row className="align-items-center">
-                            <Col md={2}>
-                                <img
-                                    src={item.image}
-                                    alt={item.title}
-                                    style={{ width: "100%", borderRadius: "8px" }}
-                                />
-                            </Col>
+                <Row>
+                    {/* CART ITEMS */}
+                    <Col lg={8}>
+                        {cart.map((item) => (
+                            <Card key={item.id} className="mb-3 shadow-sm">
+                                <Card.Body>
+                                    <Row className="align-items-center">
+                                        <Col md={2}>
+                                            <Image
+                                                src={item.image}
+                                                fluid
+                                                rounded
+                                            />
+                                        </Col>
 
-                            <Col md={4}>
-                                <h5>{item.title}</h5>
-                                <p className="mb-0">Price: ₹{item.price}</p>
-                            </Col>
+                                        <Col md={4}>
+                                            <h6>{item.title}</h6>
+                                            <small className="text-muted">
+                                                ₹{item.price}
+                                            </small>
+                                        </Col>
 
-                            <Col md={2}>
+                                        <Col md={2}>
+                                            <Form.Control
+                                                type="number"
+                                                min={1}
+                                                value={item.quantity}
+                                                onChange={(e) =>
+                                                    handleQuantityChange(
+                                                        item.id,
+                                                        +e.target.value
+                                                    )
+                                                }
+                                            />
+                                        </Col>
+
+                                        <Col md={2} className="fw-bold">
+                                            ₹{item.price * item.quantity}
+                                        </Col>
+
+                                        <Col md={2}>
+                                            <Button
+                                                variant="outline-danger"
+                                                size="sm"
+                                                onClick={() =>
+                                                    handleRemove(item.id)
+                                                }
+                                            >
+                                                Remove
+                                            </Button>
+                                        </Col>
+                                    </Row>
+                                </Card.Body>
+                            </Card>
+                        ))}
+                    </Col>
+
+                    {/* ADDRESS + SUMMARY */}
+                    <Col lg={4}>
+                        <Card
+                            className="shadow-sm sticky-top"
+                            style={{ top: "110px" }}
+                        >
+                            <Card.Body>
+                                <h5 className="fw-bold mb-3">
+                                    Shipping Address
+                                </h5>
+
                                 <Form.Control
-                                    type="number"
-                                    min={1}
-                                    value={item.quantity}
+                                    className="mb-2"
+                                    placeholder="Full Name"
                                     onChange={(e) =>
-                                        handleQuantityChange(item.id, parseInt(e.target.value))
+                                        setAddress({
+                                            ...address,
+                                            name: e.target.value,
+                                        })
                                     }
                                 />
-                            </Col>
 
-                            <Col md={2}>
-                                <strong>₹{item.price * item.quantity}</strong>
-                            </Col>
+                                <Form.Control
+                                    className="mb-2"
+                                    placeholder="Phone Number"
+                                    onChange={(e) =>
+                                        setAddress({
+                                            ...address,
+                                            phone: e.target.value,
+                                        })
+                                    }
+                                />
 
-                            <Col md={2}>
+                                <Form.Control
+                                    className="mb-2"
+                                    placeholder="Street Address"
+                                    onChange={(e) =>
+                                        setAddress({
+                                            ...address,
+                                            street: e.target.value,
+                                        })
+                                    }
+                                />
+
+                                <Row className="mb-3">
+                                    <Col>
+                                        <Form.Control
+                                            placeholder="City"
+                                            onChange={(e) =>
+                                                setAddress({
+                                                    ...address,
+                                                    city: e.target.value,
+                                                })
+                                            }
+                                        />
+                                    </Col>
+                                    <Col>
+                                        <Form.Control
+                                            placeholder="Pincode"
+                                            onChange={(e) =>
+                                                setAddress({
+                                                    ...address,
+                                                    pincode: e.target.value,
+                                                })
+                                            }
+                                        />
+                                    </Col>
+                                </Row>
+
+                                {offerMessage && (
+                                    <Alert
+                                        variant="success"
+                                        className="text-center"
+                                    >
+                                        {offerMessage}
+                                    </Alert>
+                                )}
+
+                                <hr />
+
+                                <div className="d-flex justify-content-between">
+                                    <span>Subtotal</span>
+                                    <strong>₹{subtotal}</strong>
+                                </div>
+                                <div className="d-flex justify-content-between">
+                                    <span>Tax (5%)</span>
+                                    <strong>₹{tax}</strong>
+                                </div>
+                                <div className="d-flex justify-content-between">
+                                    <span>Delivery</span>
+                                    <strong>₹{delivery}</strong>
+                                </div>
+
+                                {discount > 0 && (
+                                    <div className="d-flex justify-content-between text-success">
+                                        <span>Discount</span>
+                                        <strong>-₹{discount}</strong>
+                                    </div>
+                                )}
+
+                                <hr />
+
+                                <div className="d-flex justify-content-between fw-bold fs-5">
+                                    <span>Total</span>
+                                    <span>₹{grandTotal}</span>
+                                </div>
+
                                 <Button
-                                    variant="danger"
-                                    size="sm"
-                                    onClick={() => handleRemove(item.id)}
+                                    variant="success"
+                                    className="w-100 mt-3"
+                                    onClick={proceedToPayment}
                                 >
-                                    Remove
+                                    Proceed to Payment
                                 </Button>
-                            </Col>
-                        </Row>
-                    </Card>
-                ))}
-
-                <Card className="p-3 mt-4 shadow-sm">
-                    <h4>Grand Total: ₹{grandTotal}</h4>
-                    <Button variant="success" className="mt-2 w-100">
-                        Proceed to Pay
-                    </Button>
-                </Card>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
             </Container>
 
             <Footer />

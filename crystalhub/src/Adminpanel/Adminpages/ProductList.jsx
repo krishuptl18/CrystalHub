@@ -1,12 +1,25 @@
 import { useEffect, useState } from "react";
 import api from "../../services/api";
-import { Table, Button, Modal, Form, Row, Col, Image, Card } from "react-bootstrap";
+import {
+    Table,
+    Button,
+    Modal,
+    Form,
+    Row,
+    Col,
+    Image,
+    Card
+} from "react-bootstrap";
 
 const ProductList = () => {
     const [products, setProducts] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [editProduct, setEditProduct] = useState(null);
     const [imageError, setImageError] = useState(false);
+
+    // 🔍 Search & Category Filter
+    const [search, setSearch] = useState("");
+    const [category, setCategory] = useState("all");
 
     const loadProducts = async () => {
         const res = await api.get("/products");
@@ -38,12 +51,56 @@ const ProductList = () => {
         loadProducts();
     };
 
+    // 🔎 Filter Logic
+    const filteredProducts = products.filter((p) => {
+        const matchSearch = p.title
+            .toLowerCase()
+            .includes(search.toLowerCase());
+
+        const matchCategory =
+            category === "all" || p.category === category;
+
+        return matchSearch && matchCategory;
+    });
+
     return (
         <>
             <h2 className="mb-4 text-center fw-bold">All Products</h2>
 
             <Card className="shadow-sm border-0">
                 <Card.Body>
+
+                    {/* 🔍 SEARCH + CATEGORY FILTER */}
+                    <Row className="mb-3">
+                        <Col md={6}>
+                            <Form.Control
+                                placeholder="Search product by title..."
+                                value={search}
+                                onChange={(e) => setSearch(e.target.value)}
+                            />
+                        </Col>
+
+                        <Col md={6}>
+                            <Form.Select
+                                value={category}
+                                onChange={(e) => setCategory(e.target.value)}
+                            >
+                                <option value="all">All Categories</option>
+                                
+                                  
+                                    <option value="healingstone">HEALING CRYSTALS</option>
+                                    <option value="bracelet">CRYSTAL BRACELETS</option>
+                                    <option value="pendant">PENDANTS</option>
+                                    <option value="ring">RINGS</option>
+                                    <option value="tree">CRYSTAL TREES</option>
+                                    <option value="showpiece">SHOWPIECES</option>
+                                    <option value="sage">SAGE</option>
+                                    <option value="amethyst">AMETHYST</option>
+                            </Form.Select>
+                        </Col>
+                    </Row>
+
+                    {/* 🧾 PRODUCT TABLE */}
                     <Table hover responsive className="align-middle">
                         <thead className="table-dark">
                             <tr>
@@ -56,9 +113,8 @@ const ProductList = () => {
                         </thead>
 
                         <tbody>
-                            {products.map((p) => (
+                            {filteredProducts.map((p) => (
                                 <tr key={p.id}>
-                                    {/* IMAGE COLUMN */}
                                     <td>
                                         <img
                                             src={p.image}
@@ -78,9 +134,9 @@ const ProductList = () => {
                                     </td>
 
                                     <td>{p.title}</td>
-
-                                    <td className="text-capitalize">{p.category}</td>
-
+                                    <td className="text-capitalize">
+                                        {p.category}
+                                    </td>
                                     <td>₹{p.price}</td>
 
                                     <td className="text-center">
@@ -101,13 +157,23 @@ const ProductList = () => {
                                     </td>
                                 </tr>
                             ))}
+
+                            {filteredProducts.length === 0 && (
+                                <tr>
+                                    <td
+                                        colSpan="5"
+                                        className="text-center text-muted"
+                                    >
+                                        No products found
+                                    </td>
+                                </tr>
+                            )}
                         </tbody>
                     </Table>
-
                 </Card.Body>
             </Card>
 
-            {/* ================= EDIT MODAL ================= */}
+            {/* ✏️ EDIT MODAL */}
             <Modal
                 show={showModal}
                 onHide={() => setShowModal(false)}
@@ -165,17 +231,15 @@ const ProductList = () => {
                                         }
                                         required
                                     >
-                                        <option value="bracelets">Bracelets</option>
-                                        <option value="tree">Crystal Tree</option>
-                                        <option value="pyramid">Pyramid</option>
-                                        <option value="selenite">Selenite</option>
-                                        <option value="tumbled">Tumbled Stone</option>
-                                        <option value="ball">Crystal Ball</option>
-                                        <option value="bottle">Bottle</option>
-                                        <option value="roller">Face Roller</option>
-                                        <option value="lamp">Salt Lamp</option>
-                                        <option value="zibucoin">Zibu Coin</option>
-                                        <option value="crystalangel">Crystal Angel</option>
+                                       
+                                    <option value="healingstone">HEALING CRYSTALS</option>
+                                    <option value="bracelet">CRYSTAL BRACELETS</option>
+                                    <option value="pendant">PENDANTS</option>
+                                    <option value="ring">RINGS</option>
+                                    <option value="tree">CRYSTAL TREES</option>
+                                    <option value="showpiece">SHOWPIECES</option>
+                                    <option value="sage">SAGE</option>
+                                    <option value="amethyst">AMETHYST</option>
                                     </Form.Select>
                                 </Col>
 
@@ -195,7 +259,6 @@ const ProductList = () => {
                                 </Col>
                             </Row>
 
-                            {/* Image Preview */}
                             {editProduct.image && !imageError && (
                                 <div className="text-center mb-3">
                                     <Image
@@ -229,7 +292,10 @@ const ProductList = () => {
                         </Modal.Body>
 
                         <Modal.Footer>
-                            <Button variant="secondary" onClick={() => setShowModal(false)}>
+                            <Button
+                                variant="secondary"
+                                onClick={() => setShowModal(false)}
+                            >
                                 Cancel
                             </Button>
                             <Button type="submit" variant="warning">

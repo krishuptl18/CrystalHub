@@ -86,7 +86,7 @@ const AddProduct = () => {
                                     required
                                 >
                                     <option value="">Select Category</option>
-                                    <option value="healingstone">HEALING CRYSTALS</option>
+                                      <option value="healingstone">HEALING CRYSTALS</option>
                                     <option value="bracelet">CRYSTAL BRACELETS</option>
                                     <option value="pendant">PENDANTS</option>
                                     <option value="ring">RINGS</option>

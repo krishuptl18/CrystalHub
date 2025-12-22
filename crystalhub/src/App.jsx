@@ -9,6 +9,9 @@ import AdminRoute from "./routes/AdminRoute";
 import adminRoutes from "./Adminpanel/Adminroutes";
 import CategoryProducts from "./Pages/CategoryProducts";
 import Checkout from "./Pages/Checkout";
+import MyOrders from "./Pages/MyOrders";
+import Payment from "./Pages/Payment";
+import OrderSuccess from "./Pages/OrderSuccess";
 
 function App() {
   return (
@@ -22,7 +25,9 @@ function App() {
         <Route path="/service" element={<Service />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/products/:category" element={<CategoryProducts />} />
-        
+           <Route path="/my-orders" element={<MyOrders />} />
+              <Route path="/Payment" element={<Payment />} />
+                 <Route path="/order-success" element={<OrderSuccess />} />
       
         {/* ADMIN PANEL */}
         <Route

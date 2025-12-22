@@ -45,7 +45,7 @@ const ServiceTimeline = () => {
         {/* HERO */}
         <section className="timeline-hero">
           <Container className="text-center">
-            <h1 className="text-warning">Our Crystal Services</h1>
+            <h1 className="text-warning mt-5">Our Crystal Services</h1>
             <p>
               A mindful journey from sourcing to delivery — designed for balance,
               positivity, and growth.

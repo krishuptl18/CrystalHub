@@ -7,12 +7,12 @@ const Contact = () => {
   return (
     <>
    <Header/>
-    <section className="contact-page py-5">
-      <div className="container">
+    <section className="contact-page py-5 mt-5">
+      <div className="container ">
 
         {/* Heading */}
-        <div className="text-center mb-5">
-          <h2 className="fw-bold">Contact Us</h2>
+        <div className="text-center mb-5 ">
+          <h2 className="fw-bold mt-5">Contact Us</h2>
           <p className="text-muted">
             We’d love to hear from you. Get in touch with us!
           </p>

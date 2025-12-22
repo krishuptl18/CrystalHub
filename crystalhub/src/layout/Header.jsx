@@ -45,7 +45,7 @@ const Header = () => {
 
                         {/* Crystals Dropdown */}
                         <NavDropdown title="Crystals" id="crystals-dropdown">
-                            <NavDropdown.Item as={Link} to="/products/healingstone">
+                                 <NavDropdown.Item as={Link} to="/products/healingstone">
                                 HEALING CRYSTALS
                             </NavDropdown.Item>
                            <NavDropdown.Item as={Link} to="/products/bracelet">
@@ -70,18 +70,20 @@ const Header = () => {
                                 AMETHYST
                             </NavDropdown.Item>
                         </NavDropdown>
+                       
 
                         <Nav.Link as={Link} to="/service">Our Services</Nav.Link>
                         <Nav.Link as={Link} to="/contact">Contact Us</Nav.Link>
+                        <Nav.Link as={Link} to="/my-orders">My Orders</Nav.Link>
 
                         {/* Search */}
-                        <Form className="search-form ms-md-3 me-3">
+                        {/* <Form className="search-form ms-md-3 me-3">
                             <Form.Control
                                 type="search"
                                 placeholder="Search crystals..."
                                 className="search-input"
                             />
-                        </Form>
+                        </Form> */}
 
                         {/* SHOP NOW BUTTON */}
                         <Button

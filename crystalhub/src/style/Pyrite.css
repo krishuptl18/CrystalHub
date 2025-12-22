@@ -1,21 +1,36 @@
+/* =========================
+   WEBSITE PRODUCT FIX
+========================= */
+
+/* HEADER HEIGHT = ~100px */
 .category-wrapper {
   padding: 20px;
+  padding-top: 120px; /* 🔥 FIX FOR FIXED HEADER */
 }
 
+/* GRID */
 .category-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 20px;
 }
 
+/* ITEM */
 .item {
-  text-decoration: none;
+  text-align: center;
   color: inherit;
 }
 
+/* IMAGE */
 .item img {
   width: 100%;
-  height: 160px;          /* FIXED IMAGE HEIGHT */
-  object-fit: cover;     /* keeps aspect ratio, crops nicely */
+  height: 160px;
+  object-fit: cover;
   border-radius: 10px;
+}
+
+/* TEXT */
+.item p {
+  margin-top: 8px;
+  font-weight: 500;
 }

@@ -4,12 +4,13 @@ import "./AdminLayout.css";
 
 const AdminLayout = () => {
     return (
-        <div className="admin-container">
+        <>
             <AdminSidebar />
-            <div className="admin-content">
+
+            <div className="admin-main-content">
                 <Outlet />
             </div>
-        </div>
+        </>
     );
 };
 
