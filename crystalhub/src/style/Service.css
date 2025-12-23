@@ -1,72 +1,100 @@
+/* ===============================
+   PAGE BASE
+================================ */
 .service-timeline-page {
-  background: #fff;
-  color: #0b0f1a;
+  background: #f9fafc;
+  color: #1e1e1e;
 }
 
-/* HERO */
+/* ===============================
+   HERO
+================================ */
 .timeline-hero {
-  padding: 100px 0;
-  background: linear-gradient(180deg, #1b1f3b, #0b0f1a);
+  padding: 110px 0;
+  text-align: center;
+  background: linear-gradient(180deg, #ffffff, #f9fafc);
 }
 
 .timeline-hero h1 {
   font-size: 3rem;
   font-weight: 700;
+  color: #111;
 }
 
 .timeline-hero p {
-  max-width: 700px;
+  max-width: 720px;
   margin: 20px auto 0;
-  color: #d4d4f0;
+  color: #444;
+  font-size: 1.05rem;
 }
 
-/* TIMELINE */
+/* ===============================
+   TIMELINE SECTION
+================================ */
 .timeline-section {
-  padding: 80px 0;
+  padding: 90px 0;
 }
 
+/* ===============================
+   CARD
+================================ */
 .timeline-card {
   display: flex;
-  gap: 20px;
-  background: linear-gradient(145deg, #12182b, #0b0f1a);
-  border-radius: 20px;
-  padding: 30px;
-  transition: 0.4s ease;
+  gap: 22px;
+  padding: 34px;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #e6e8f0;
+  transition: all 0.3s ease;
 }
 
 .timeline-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.6);
+  transform: translateY(-5px);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.12);
 }
 
+/* ===============================
+   ICON
+================================ */
 .timeline-icon {
   font-size: 38px;
-  color: #9f8cff;
-  min-width: 50px;
+  min-width: 48px;
+  color: #4a6cf7;
 }
 
+/* ===============================
+   CONTENT
+================================ */
 .timeline-content h4 {
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   font-weight: 600;
+  font-size: 1.15rem;
+  color: #111;
 }
 
 .timeline-content p {
-  color: #c9c9e3;
+  color: #333;
   font-size: 0.95rem;
+  line-height: 1.6;
 }
 
-/* CTA */
+/* ===============================
+   CTA
+================================ */
 .timeline-cta {
-  padding: 90px 0;
-  background: radial-gradient(circle, #3a1c71, #0b0f1a);
+  padding: 95px 0;
+  text-align: center;
+  background: linear-gradient(180deg, #f9fafc, #ffffff);
 }
 
 .timeline-cta h2 {
   font-size: 2.4rem;
   font-weight: 700;
+  color: #111;
 }
 
 .timeline-cta p {
-  margin: 15px 0 25px;
-  color: #ddd;
+  margin: 16px 0 26px;
+  color: #444;
+  font-size: 1.05rem;
 }
