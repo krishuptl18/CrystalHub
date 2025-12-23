@@ -9,7 +9,7 @@ const Login = () => {
     const navigate = useNavigate();
 
     const onSubmit = (data) => {
-        // ✅ ADMIN LOGIN
+        // ADMIN LOGIN
         if (
             data.email === "admin@crystalhub.com" &&
             data.password === "admin123"
@@ -27,13 +27,10 @@ const Login = () => {
             return;
         }
 
-        // ✅ USER LOGIN (FROM USERS ARRAY)
+        // USER LOGIN
         const users = JSON.parse(localStorage.getItem("users")) || [];
-
         const user = users.find(
-            (u) =>
-                u.email === data.email &&
-                u.password === data.password
+            (u) => u.email === data.email && u.password === data.password
         );
 
         if (!user) {
@@ -44,18 +41,18 @@ const Login = () => {
         localStorage.setItem("authUser", JSON.stringify(user));
         localStorage.setItem("isLoggedIn", true);
         navigate("/");
-
     };
 
     return (
-        <Container className="auth-wrapper">
-            <div className="auth-card slide-up">
-                <h3>Login</h3>
+        <Container fluid className="auth-wrapper">
+            <div className="auth-card glass slide-up">
+                <h3 className="auth-title">Welcome Back</h3>
+                <p className="auth-subtitle">Login to CrystalHub</p>
 
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     <Form.Control
                         type="email"
-                        placeholder="Email"
+                        placeholder="Email address"
                         {...register("email", { required: true })}
                     />
 
@@ -71,7 +68,7 @@ const Login = () => {
                 </Form>
 
                 <p className="switch-text">
-                    New user? <Link to="/register">Register</Link>
+                    New user? <Link to="/register">Create account</Link>
                 </p>
             </div>
         </Container>
